@@ -1,11 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import SinglePost from '../views/SinglePost.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/posts/:id',
+    name: 'SinglePost',
+    component: SinglePost,
+    props: true
   }
 ]
 
