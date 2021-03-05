@@ -47,6 +47,14 @@
         "three"
       ],
       "id": 5
+    },
+    {
+      "title": "Composition Router",
+      "body": "All about routing with the composition api",
+      "tags": [
+        "router"
+      ],
+      "id": 6
     }
   ]
 }

@@ -15,6 +15,7 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import { useRouter } from 'vue-router' 
 
 export default {
     setup(){
@@ -22,6 +23,8 @@ export default {
         const body = ref('')
         const tag = ref('')
         const tags = ref([])
+
+        const router = useRouter()
 
         const addTag = () => {
             
@@ -41,9 +44,8 @@ export default {
                         body: body.value,
                         tags: tags.value
                     })
-                }).then(() => {
-                    // Will route to home page next
-                })
+            })
+            router.push('/')
         } 
         return { title, body, tag, tags, addTag, addPost }
     }

@@ -15,9 +15,7 @@ export default {
     props: ['posts'],
     components: { BlogPost },
     setup(props){
-      onMounted(() => {
-          // code to run when the component is mounted
-      })
+      
 
     }
 }
