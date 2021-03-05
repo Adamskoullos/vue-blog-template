@@ -7,7 +7,7 @@
           <textarea type="text" v-model="body" required></textarea>
           <label>Tags - Hit enter to add:</label>
           <input type="text" v-model="tag" @keydown.enter.prevent="addTag" required>
-          <div v-for="tag in tags" :key="tag" class="pill">{{ tag }}</div>
+          <div v-for="tag in tags" :key="tag" class="pill"># {{ tag }} </div>
           <button >Add Post</button>
       </form>
   </div>
