@@ -1,14 +1,14 @@
 <template>
   <div class="create">
-      <form>
+      <form @submit.prevent="addPost">
           <label>Title:</label>
           <input type="text" v-model="title" required>
           <label>Content:</label>
           <textarea type="text" v-model="body" required></textarea>
           <label>Tags - Hit enter to add:</label>
-          <input type="text" v-model="tag" @keydown.enter.prevent="addTag" required>
+          <input type="text" v-model="tag" @keydown.enter.prevent="addTag">
           <div v-for="tag in tags" :key="tag" class="pill"># {{ tag }} </div>
-          <button >Add Post</button>
+          <button>Add Post</button>
       </form>
   </div>
 </template>
@@ -31,7 +31,21 @@ export default {
             }
             tag.value = '';
         }
-        return { title, body, tag, tags, addTag }
+
+        const addPost = async () => {
+            await fetch('http://localhost:3000/posts', {
+                    method: 'POST',
+                    headers: { 'content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title: title.value,
+                        body: body.value,
+                        tags: tags.value
+                    })
+                }).then(() => {
+                    // Will route to home page next
+                })
+        } 
+        return { title, body, tag, tags, addTag, addPost }
     }
 }
 </script>

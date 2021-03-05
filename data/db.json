@@ -1,24 +1,52 @@
 {
-    "posts": [
-      {
-        "id": 1,
-        "title": "welcome to the new blog",
-        "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "tags": [
-          "webdev",
-          "coding",
-          "news"
-        ]
-      },
-      {
-        "id": 2,
-        "title": "top 5 CSS tips",
-        "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "tags": [
-          "css",
-          "webdev",
-          "coding"
-        ]
-      }
-    ]
-  }
+  "posts": [
+    {
+      "id": 1,
+      "title": "welcome to the new blog",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "tags": [
+        "webdev",
+        "coding",
+        "news"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "top 5 CSS tips",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "tags": [
+        "css",
+        "webdev",
+        "coding"
+      ]
+    },
+    {
+      "title": "New Post",
+      "body": "This is the first post, I really hope it all works.",
+      "tags": [
+        "work",
+        "bloodywork",
+        "pleasework"
+      ],
+      "id": 3
+    },
+    {
+      "title": "Another New Post",
+      "body": "What seems to be the problem, please give me a message",
+      "tags": [
+        "message"
+      ],
+      "id": 4
+    },
+    {
+      "title": "ihssbdfvdsfvdf",
+      "body": "dfknbsdfbdf",
+      "tags": [
+        "one",
+        "two",
+        "three"
+      ],
+      "id": 5
+    }
+  ]
+}
