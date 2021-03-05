@@ -2,7 +2,7 @@
   <div v-if="error">{{ error }}</div>
   <div v-if="post" class="post">
     <h2>{{ post.title }}</h2>
-    <p>{{ post.body }}</p>
+    <p class="pre">{{ post.body }}</p>
     <span v-for="tag in post.tags" :key="tag"> # {{ tag }} </span>
   </div>
   <div v-else>Loading....</div>
@@ -23,7 +23,21 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+ .tags a {
+    margin-right: 10px;
+  }
+  .post {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .post p {
+    color: #444;
+    line-height: 1.5em;
+    margin-top: 40px;
+  }
+  .pre {
+    white-space: pre-wrap;
+  }
 </style>
 
