@@ -1,18 +1,17 @@
 import { ref } from '@vue/reactivity'
+import { fStore } from '../firebase/config'
 
 const getPosts = () => {
     
     const posts = ref([]);
     const error = ref(null);
-    const uri = 'http://localhost:3000/posts';
 
     const load = async () => {
       try{
-        let data = await fetch(uri)
-        if(!data.ok){
-          throw Error('No data available');
-        }
-        posts.value = await data.json();
+        const res = await fStore.collection('posts').get()
+        posts.value = res.docs.map(doc => {
+          return { ...doc.data(), id: doc.id }
+        })
       }
       catch(err){
         error.value = err.message; 

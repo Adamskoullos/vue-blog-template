@@ -1,4 +1,5 @@
 import { ref } from '@vue/reactivity'
+import { fStore } from '../firebase/config'
 
 const getPost = (id) => {
     
@@ -8,11 +9,13 @@ const getPost = (id) => {
 
     const load = async () => {
       try{
-        let data = await fetch(uri)
-        if(!data.ok){
-          throw Error('This post does not exist');
+        const res = await fStore.collection('posts').doc(id).get()
+        
+        if(!res.exists){
+          throw Error('That post does not exist')
         }
-        post.value = await data.json();
+        
+        post.value = { ...res.data(), id: res.id }
       }
       catch(err){
         error.value = err.message; 
@@ -24,5 +27,7 @@ const getPost = (id) => {
 }
 
 export default getPost
+
+
 
 
