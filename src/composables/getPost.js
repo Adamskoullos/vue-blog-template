@@ -5,7 +5,6 @@ const getPost = (id) => {
     
     const post = ref(null);
     const error = ref(null);
-    const uri = 'http://localhost:3000/posts/' + id;
 
     const load = async () => {
       try{
