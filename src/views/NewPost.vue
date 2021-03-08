@@ -16,7 +16,7 @@
 <script>
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router' 
-import { fStore } from '../firebase/config'
+import { fStore, timestamp } from '../firebase/config'
 
 export default {
     setup(){
@@ -40,7 +40,8 @@ export default {
             const post = {
                 title: title.value,
                 body: body.value,
-                tags: tags.value
+                tags: tags.value,
+                createdAt: timestamp()
             }
 
             const res = await fStore.collection('posts').add(post)
