@@ -4,6 +4,7 @@
     <h2>{{ post.title }}</h2>
     <p class="pre">{{ post.body }}</p>
     <span v-for="tag in post.tags" :key="tag"> # {{ tag }} </span>
+    <button @click="deletePost" class="delete">Delete</button>
   </div>
   <div v-else>
     <Spinner />
@@ -13,7 +14,8 @@
 <script>
 import getPost from '../composables/getPost'
 import Spinner from '../components/Spinner.vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import { fStore } from '../firebase/config'
 
 export default {
     props: ['id'],
@@ -21,11 +23,17 @@ export default {
     setup(props){
 
       const route = useRoute();
+      const router = useRouter();
       const { post, error, load } = getPost(route.params.id);
       // const { post, error, load } = getPost(props.id);
       load();
 
-      return { post, error }
+      const deletePost = async () => {
+        await fStore.collection('posts').doc(route.params.id).delete()
+        router.push('/');
+      }
+
+      return { post, error, deletePost }
     }
 }
 </script>
@@ -45,6 +53,10 @@ export default {
   }
   .pre {
     white-space: pre-wrap;
+  }
+  button.delete{
+    margin: 10px auto;
+    cursor: pointer;
   }
 </style>
 

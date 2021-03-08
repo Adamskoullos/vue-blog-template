@@ -16,6 +16,7 @@
 <script>
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router' 
+import { fStore } from '../firebase/config'
 
 export default {
     setup(){
@@ -36,15 +37,14 @@ export default {
         }
 
         const addPost = async () => {
-            await fetch('http://localhost:3000/posts', {
-                    method: 'POST',
-                    headers: { 'content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        title: title.value,
-                        body: body.value,
-                        tags: tags.value
-                    })
-            })
+            const post = {
+                title: title.value,
+                body: body.value,
+                tags: tags.value
+            }
+
+            const res = await fStore.collection('posts').add(post)
+
             router.push('/')
         } 
         return { title, body, tag, tags, addTag, addPost }
